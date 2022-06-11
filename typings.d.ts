@@ -5,6 +5,7 @@ export interface Tweet extends TweetBody{
  _rev: string
  _type: 'tweet'
  blockTweet: boolean
+
 }
 
 export const TweetBody ={

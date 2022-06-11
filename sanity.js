@@ -1,6 +1,6 @@
 import { createClient } from 'next-sanity'
 
-/ lib/config.js
+// lib/config.js
 export const config = {
   /**
    * Find your project ID and dataset in `sanity.json` in your studio project.
@@ -20,8 +20,5 @@ export const config = {
   useCdn: process.env.NODE_ENV === 'production',
 }
 
-// setup the client for fetching data in the getProps page functions 
+// setup the client for fetching data in the getProps page functions
 export const sanityClient = createClient(config)
-
-
-
