@@ -10,8 +10,10 @@ import {
   HomeIcon,
 } from '@heroicons/react/outline'
 import SidebarRow from './SidebarRow'
+import {useSession, signOut, signIn} from 'next-auth/react'
 
 function Sidebar() {
+  const {data: session} = useSession()
   return (
     <div className="col-span-2 flex flex-col items-center px-4 md:items-start ">
       <img
@@ -25,7 +27,7 @@ function Sidebar() {
       <SidebarRow title="Messages" Icon={MailIcon} />
       <SidebarRow title="Bookmarks" Icon={BookmarkIcon} />
       <SidebarRow title="Lists" Icon={CollectionIcon} />
-      <SidebarRow title="Sign In" Icon={UserIcon} />
+      <SidebarRow title={session ? 'Sign Out' : 'Sign In'} onClick={session ? signOut : signIn} Icon={UserIcon} />
       <SidebarRow title="More" Icon={DotsCircleHorizontalIcon} />
     </div>
   )

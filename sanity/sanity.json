@@ -1,10 +1,10 @@
 {
   "root": true,
   "project": {
-    "name": "twitter-clone"
+    "name": "twitter-clonezz"
   },
   "api": {
-    "projectId": "8clguu3f",
+    "projectId": "7vp0x60v",
     "dataset": "production"
   },
   "plugins": [

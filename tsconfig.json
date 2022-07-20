@@ -1,3 +1,54 @@
+// {
+//   Note: This config is only used to help editors like VS Code understand/resolve
+//   parts, the actual transpilation is done by babel. Any compiler configuration in
+//   here will be ignored.
+//   "include": [
+//     "./node_modules/@sanity/base/types/**/*.ts",
+//     "./**/*.ts",
+//     "./**/*.tsx"
+//   ],
+//   "compilerOptions": {
+//     "target": "es5",
+//     "lib": ["dom", "dom.iterable", "esnext"],
+//     "allowJs": true,
+//     "skipLibCheck": true,
+//     "strict": false,
+//     "forceConsistentCasingInFileNames": true,
+//     "noEmit": true,
+//     "incremental": true,
+//     "esModuleInterop": true,
+//     "module": "esnext",
+//     "isolatedModules": true,
+//     "jsx": "preserve",
+//     "resolveJsonModule": true
+//   },
+//   "exclude": ["node_modules"]
+// }
+// {
+//   "compilerOptions": {
+//     "target": "es6",
+//     "module": "commonjs",
+//     "moduleResolution": "node",
+//     "noResolve": false,
+//     "noImplicitAny": false,
+//     "removeComments": true,
+//     "sourceMap": true,
+//     "allowJs": true,
+//     "jsx": "preserve",
+//     "lib": ["dom", "dom.iterable", "esnext"],
+//     "skipLibCheck": true,
+//     "strict": false,
+//     "forceConsistentCasingInFileNames": true,
+//     "noEmit": true,
+//     "incremental": true,
+//     "esModuleInterop": true,
+//     "resolveJsonModule": true,
+//     "isolatedModules": true
+//   },
+//   "exclude": ["./node_modules/**/*"],
+//   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+// }
+
 {
   "compilerOptions": {
     "target": "es5",
@@ -15,6 +66,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/api/getTweets.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }
