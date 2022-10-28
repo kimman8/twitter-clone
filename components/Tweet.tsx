@@ -6,7 +6,7 @@ import {
   UploadIcon,
 } from '@heroicons/react/outline'
 import TimeAgo from 'react-timeago'
-import { CommentBody, Tweet } from '../typings'
+import { Comment, CommentBody, Tweet } from '../typings'
 import { fetchComments } from '../utils/fetchComments'
 import toast from 'react-hot-toast'
 
