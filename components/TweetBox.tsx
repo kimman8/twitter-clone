@@ -88,7 +88,8 @@ function TweetBox({ setTweets }: Props) {
             </div>
             <button
               onClick={handleSubmit}
-              disabled={!input || !session}
+              // disabled={!input || !session}
+              disabled={!input}
               className="mr-2 rounded-full bg-twitter px-5 py-2 font-bold text-white disabled:opacity-40"
             >
               Tweet
