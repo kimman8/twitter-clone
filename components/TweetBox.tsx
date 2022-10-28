@@ -9,12 +9,14 @@ import {
 import { Tweet, TweetBody } from '../typings'
 import { fetchTweets } from '../utils/fetchTweets'
 import toast from 'react-hot-toast'
+import { useSession } from 'next-auth/react'
 
 interface Props {
   setTweets: Dispatch<SetStateAction<Tweet[]>>
 }
 function TweetBox({ setTweets }: Props) {
   const [input, setInput] = useState<string>('')
+  const { data: session } = useSession()
   const [image, setImage] = useState<string>('')
   const imageInputRef = useRef<HTMLInputElement>(null)
   const [imageUrlBoxIsOpen, setImageUrlBoxIsOpen] = useState<boolean>(false)
@@ -57,7 +59,10 @@ function TweetBox({ setTweets }: Props) {
   return (
     <div className="flex space-x-2 p-5">
       <img
-        src="https://pbs.twimg.com/profile_images/1585877798073208832/GuzcxI_P_400x400.jpg"
+        src={
+          session?.user?.image ||
+          'https://pbs.twimg.com/profile_images/1585877798073208832/GuzcxI_P_400x400.jpg'
+        }
         alt="me"
         className="mt-4 ml-4 h-14 w-14 rounded-full object-cover"
       />
@@ -83,7 +88,7 @@ function TweetBox({ setTweets }: Props) {
             </div>
             <button
               onClick={handleSubmit}
-              disabled={!input}
+              disabled={!input || !session}
               className="mr-2 rounded-full bg-twitter px-5 py-2 font-bold text-white disabled:opacity-40"
             >
               Tweet
