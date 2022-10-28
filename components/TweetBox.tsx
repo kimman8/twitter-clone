@@ -13,23 +13,26 @@ import toast from 'react-hot-toast'
 interface Props {
   setTweets: Dispatch<SetStateAction<Tweet[]>>
 }
-function TweetBox({setTweets}: Props) {
+function TweetBox({ setTweets }: Props) {
   const [input, setInput] = useState<string>('')
-  const [image, setImage] = useState<string>('') 
+  const [image, setImage] = useState<string>('')
   const imageInputRef = useRef<HTMLInputElement>(null)
   const [imageUrlBoxIsOpen, setImageUrlBoxIsOpen] = useState<boolean>(false)
-  const addImageToTweet = (e: React.MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
+  const addImageToTweet = (
+    e: React.MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+  ) => {
     e.preventDefault()
-    if(!imageInputRef.current?.value) return
+    if (!imageInputRef.current?.value) return
     setImage(imageInputRef.current.value)
     imageInputRef.current.value = ''
     setImageUrlBoxIsOpen(false)
   }
   const postTweet = async () => {
-    const tweetInfo : TweetBody = {
-      text: input, 
+    const tweetInfo: TweetBody = {
+      text: input,
       username: 'kimman',
-      profileImg: 'https://pbs.twimg.com/profile_images/1525418440378687488/8RMhFgzd_400x400.jpg',
+      profileImg:
+        'https://pbs.twimg.com/profile_images/1585877798073208832/GuzcxI_P_400x400.jpg',
       image: image,
     }
     const result = await fetch(`/api/addTweet`, {
@@ -40,11 +43,11 @@ function TweetBox({setTweets}: Props) {
     const newTweets = await fetchTweets()
     setTweets(newTweets)
     toast('Tweet Posted', {
-      icon: '🚀'
+      icon: '🚀',
     })
-    return json 
+    return json
   }
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
     postTweet()
     setImage('')
@@ -54,7 +57,7 @@ function TweetBox({setTweets}: Props) {
   return (
     <div className="flex space-x-2 p-5">
       <img
-        src="https://d2oezb05uoa2c1.cloudfront.net/p/potqj2ww84g44s0g.jpg"
+        src="https://pbs.twimg.com/profile_images/1585877798073208832/GuzcxI_P_400x400.jpg"
         alt="me"
         className="mt-4 ml-4 h-14 w-14 rounded-full object-cover"
       />
@@ -69,7 +72,10 @@ function TweetBox({setTweets}: Props) {
           />
           <div className="flex items-center justify-between">
             <div className="flex space-x-2 text-twitter">
-              <PhotographIcon onClick={()=>(setImageUrlBoxIsOpen(!imageUrlBoxIsOpen))} className="h-5 w-5 cursor-pointer transition-transform duration-150 ease-out hover:scale-150" />
+              <PhotographIcon
+                onClick={() => setImageUrlBoxIsOpen(!imageUrlBoxIsOpen)}
+                className="h-5 w-5 cursor-pointer transition-transform duration-150 ease-out hover:scale-150"
+              />
               <SearchCircleIcon className="h-5 w-5" />
               <EmojiHappyIcon className="h-5 w-5" />
               <CalendarIcon className="h-5 w-5" />
@@ -84,13 +90,28 @@ function TweetBox({setTweets}: Props) {
             </button>
           </div>
           {imageUrlBoxIsOpen && (
-            <form className='rounded-lg bg-twitter/80 mt-5 flex py-2 px-4'>
-              <input ref={imageInputRef} className='flex-1 bg-transparent p-2 text-white outline-none placeholder:text-white' type="text" placeholder='Enter Image URL...'/>
-              <button type='submit' onClick={addImageToTweet} className='font-bold text-white'>Add Image</button>
+            <form className="mt-5 flex rounded-lg bg-twitter/80 py-2 px-4">
+              <input
+                ref={imageInputRef}
+                className="flex-1 bg-transparent p-2 text-white outline-none placeholder:text-white"
+                type="text"
+                placeholder="Enter Image URL..."
+              />
+              <button
+                type="submit"
+                onClick={addImageToTweet}
+                className="font-bold text-white"
+              >
+                Add Image
+              </button>
             </form>
           )}
           {image && (
-            <img src={image} alt="" className='mt-10 h-40 w-full object-contain rounded-xl shadow-lg'/>
+            <img
+              src={image}
+              alt=""
+              className="mt-10 h-40 w-full rounded-xl object-contain shadow-lg"
+            />
           )}
         </form>
       </div>

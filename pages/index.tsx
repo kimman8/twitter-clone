@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
+import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast'
 import Feed from '../components/Feed'
 import Sidebar from '../components/Sidebar'
 import Widgets from '../components/Widgets'
@@ -30,7 +31,6 @@ const Home = ({ tweets }: Props) => {
 export default Home
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-
   const tweets = await fetchTweets()
   return {
     props: {
